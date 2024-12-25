@@ -4,11 +4,13 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Portfolio from "../components/Portfolio";
+import { Analytics } from "@vercel/analytics/react"
 import Contact from "../components/Contact";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark text-foreground-light dark:text-foreground-dark">
+      <Analytics/>
       <Navigation />
       <Hero />
       <About />
