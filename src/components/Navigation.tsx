@@ -16,6 +16,18 @@ const Navigation = () => {
     { label: "Contact", href: "#contact" },
   ], []);
 
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: offsetTop - 80,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = menuItems.map((item) => item.href.substring(1));
@@ -47,34 +59,24 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuItems]);
 
-  const handleNavClick = (href: string) => {
-    setIsMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: offsetTop - 80,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm z-50 border-b border-primary/20 dark:border-primary-dark/20">
-      <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-4">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          {/* Logo with Link to Home */}
+          {/* Terminal-style Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl sm:text-3xl text-primary/90 dark:text-primary-dark hover:text-primary dark:hover:text-primary-dark transition-colors duration-300 relative group"
+            className="font-mono text-xl text-primary dark:text-primary-dark hover:text-primary/80 dark:hover:text-primary-dark/80 transition-colors duration-300"
           >
-            <span className="relative z-10">{"{ Nehal }"}</span>
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary/20 dark:bg-primary-dark/20 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+            <span className="text-primary/90 dark:text-primary-dark/90">$</span>
+            <span className="text-primary dark:text-primary-dark ml-2">nehal</span>
+            <span className="text-foreground-light/50 dark:text-foreground-dark/50">@</span>
+            <span className="text-primary/80 dark:text-primary-dark/80">dev</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex gap-8">
+          <div className="hidden md:flex items-center gap-6">
+            <ul className="flex gap-6">
               {menuItems.map((item) => (
                 <li key={item.label}>
                   <Link
@@ -83,28 +85,27 @@ const Navigation = () => {
                       e.preventDefault();
                       handleNavClick(item.href);
                     }}
-                    className={`font-mono text-base sm:text-lg transition-all duration-300 relative ${
+                    className={`font-mono text-base transition-all duration-300 group ${
                       activeSection === item.href.substring(1)
-                        ? "text-primary/90 dark:text-primary-dark"
-                        : "text-foreground-light/90 dark:text-foreground-dark hover:text-primary/90 dark:hover:text-primary-dark"
+                        ? "text-primary dark:text-primary-dark"
+                        : "text-foreground-light/70 dark:text-foreground-dark/70 hover:text-primary dark:hover:text-primary-dark"
                     }`}
                   >
-                    <span className="relative z-10">{item.label}</span>
-                    <div className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary/20 dark:bg-primary-dark/20 transform origin-left transition-transform duration-300 ${
-                      activeSection === item.href.substring(1) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}></div>
+                    <span className="text-primary/60 dark:text-primary-dark/60 mr-1">$</span>
+                    {item.label}
+                    <span className="block h-0.5 bg-primary/20 dark:bg-primary-dark/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                   </Link>
                 </li>
               ))}
             </ul>
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-primary/5 hover:bg-primary/10 dark:bg-primary-dark/5 dark:hover:bg-primary-dark/10 transition-all duration-300 transform hover:scale-110"
+              className="p-2 text-primary dark:text-primary-dark hover:text-primary/80 dark:hover:text-primary-dark/80 transition-all duration-300"
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-primary-dark" />
+                <Sun className="w-5 h-5" />
               ) : (
-                <Moon className="w-5 h-5 text-primary/90" />
+                <Moon className="w-5 h-5" />
               )}
             </button>
           </div>
@@ -113,17 +114,17 @@ const Navigation = () => {
           <div className="md:hidden flex items-center gap-4">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-primary/5 hover:bg-primary/10 dark:bg-primary-dark/5 dark:hover:bg-primary-dark/10 transition-all duration-300 transform hover:scale-110"
+              className="p-2 text-primary dark:text-primary-dark hover:text-primary/80 dark:hover:text-primary-dark/80 transition-all duration-300"
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-primary-dark" />
+                <Sun className="w-5 h-5" />
               ) : (
-                <Moon className="w-5 h-5 text-primary/90" />
+                <Moon className="w-5 h-5" />
               )}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-primary/90 dark:text-primary-dark hover:text-primary dark:hover:text-primary-dark transition-colors duration-300"
+              className="p-2 text-primary dark:text-primary-dark hover:text-primary/80 dark:hover:text-primary-dark/80 transition-all duration-300"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -136,7 +137,7 @@ const Navigation = () => {
             isMenuOpen ? "top-full opacity-100 translate-y-0" : "-top-96 opacity-0 -translate-y-10"
           }`}
         >
-          <ul className="flex flex-col py-4">
+          <ul className="flex flex-col py-2">
             {menuItems.map((item) => (
               <li key={item.label}>
                 <Link
@@ -145,12 +146,13 @@ const Navigation = () => {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`block py-3 px-6 font-mono text-base sm:text-lg transition-all duration-300 relative ${
+                  className={`block py-2 px-4 font-mono text-base transition-all duration-300 ${
                     activeSection === item.href.substring(1)
-                      ? "text-primary/90 dark:text-primary-dark bg-primary/5 dark:bg-primary-dark/5"
-                      : "text-foreground-light/90 dark:text-foreground-dark hover:text-primary/90 dark:hover:text-primary-dark hover:bg-primary/5 dark:hover:bg-primary-dark/5"
+                      ? "text-primary dark:text-primary-dark bg-primary/5 dark:bg-primary-dark/5"
+                      : "text-foreground-light/70 dark:text-foreground-dark/70 hover:text-primary dark:hover:text-primary-dark hover:bg-primary/5 dark:hover:bg-primary-dark/5"
                   }`}
                 >
+                  <span className="text-primary/60 dark:text-primary-dark/60 mr-1">$</span>
                   {item.label}
                 </Link>
               </li>

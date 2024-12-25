@@ -73,3 +73,23 @@
   border-right: 2px solid transparent;
   animation: typewriter 2.5s steps(40, end);
 }
+
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
