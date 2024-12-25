@@ -5,7 +5,7 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Portfolio from "../components/Portfolio";
 import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import Contact from "../components/Contact";
 
 const Index = () => {
