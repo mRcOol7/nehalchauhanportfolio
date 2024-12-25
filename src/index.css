@@ -12,6 +12,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply scroll-pt-20;
   }
 
   body {
@@ -20,5 +21,17 @@
 
   ::selection {
     @apply bg-black text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background-light dark:bg-background-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 dark:bg-primary-dark/20 rounded-full hover:bg-primary/30 dark:hover:bg-primary-dark/30 transition-colors duration-300;
   }
 }

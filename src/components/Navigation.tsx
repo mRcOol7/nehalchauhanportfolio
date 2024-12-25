@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 const Navigation = () => {
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   
   const menuItems = [
     { label: "Home", href: "#home" },
@@ -15,11 +16,48 @@ const Navigation = () => {
     { label: "Contact", href: "#contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = menuItems.map(item => item.href.substring(1));
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm z-50 border-b border-primary">
+    <nav className="fixed top-0 left-0 right-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm z-50 border-b border-primary/20 dark:border-primary-dark/20">
       <div className="container mx-auto px-content py-4">
         <div className="flex justify-between items-center">
-          <div className="font-mono text-heading-2 text-primary dark:text-primary-dark animate-fade-in">{"{ Portfolio }"}</div>
+          <div className="font-serif text-heading-2 text-primary dark:text-primary-dark animate-fade-in relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary/20 dark:after:bg-primary-dark/20 after:bottom-0 after:left-0 after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300">
+            {"{ Portfolio }"}
+          </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
@@ -28,7 +66,15 @@ const Navigation = () => {
                 <li key={item.label}>
                   <Link
                     to={item.href}
-                    className="font-mono text-body hover:text-primary dark:hover:text-primary-dark transition-colors duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary dark:after:bg-primary-dark after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
+                    className={`font-mono text-body transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300 ${
+                      activeSection === item.href.substring(1)
+                        ? "text-primary dark:text-primary-dark after:scale-x-100"
+                        : "text-foreground-light dark:text-foreground-dark hover:text-primary dark:hover:text-primary-dark after:bg-primary dark:after:bg-primary-dark"
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -79,8 +125,15 @@ const Navigation = () => {
               <li key={item.label}>
                 <Link
                   to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block py-3 px-content font-mono text-body hover:text-primary dark:hover:text-primary-dark transition-colors duration-300 hover:bg-primary/10 dark:hover:bg-primary-dark/10"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                  className={`block py-3 px-content font-mono text-body transition-colors duration-300 ${
+                    activeSection === item.href.substring(1)
+                      ? "text-primary dark:text-primary-dark bg-primary/10 dark:bg-primary-dark/10"
+                      : "text-foreground-light dark:text-foreground-dark hover:text-primary dark:hover:text-primary-dark hover:bg-primary/5 dark:hover:bg-primary-dark/5"
+                  }`}
                 >
                   {item.label}
                 </Link>
