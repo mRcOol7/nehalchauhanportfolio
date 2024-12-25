@@ -1,4 +1,4 @@
-# Nehal CHauhan Portfolio
+# Nehal Cauhan Portfolio
 
 <div align="center">
 
