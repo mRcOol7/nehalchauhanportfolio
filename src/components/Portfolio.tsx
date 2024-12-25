@@ -1,57 +1,91 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 const Portfolio = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   const projects = [
     {
-      title: "Vintage Architecture",
-      image: "https://images.unsplash.com/photo-1527576539890-dfa815648363",
-      category: "Design",
-      github: "https://github.com/username/project1",
-      preview: "https://project1.demo",
-    },
-    {
-      title: "Classic Workspace",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      category: "Development",
-      github: "https://github.com/username/project2",
-      preview: "https://project2.demo",
-    },
-    {
-      title: "Retro Systems",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      title: "BMI Calculator",
+      image: "https://i.ibb.co/bNxhc1T/React-App.png",
       category: "Technology",
-      github: "https://github.com/username/project3",
-      preview: "https://project3.demo",
+      description: "A simple BMI calculator built with React,Node and Express",
+      github: "https://github.com/mRcOol7/body-mass-index-cal",
+      preview: "https://github.com/mRcOol7/body-mass-index-cal",
     },
     {
-      title: "Timeless Solutions",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      category: "Design",
-      github: "https://github.com/username/project4",
-      preview: "https://project4.demo",
+      title: "DNA Sequence",
+      image: "https://i.ibb.co/fNK9jJ5/React-App-1.png",
+      category: "Development",
+      description: "A MERN stack application for DNA sequence analysis.",
+      github: "https://github.com/MERN-bio-tool/DNA-sequence.git",
+      preview: "https://github.com/MERN-bio-tool/DNA-sequence.git",
+    },
+    {
+      title: "Watch Live Sports Online",
+      image: "https://i.ibb.co/PD1ftNV/Watch-Live-Sports-Online-12-25-2024-01-22-PM.png",
+      category: "Technology",
+      description: "A live sports streaming platform built with HTML,CSS,JS",
+      github: "https://live-sports-stream.vercel.app",
+      preview: "https://live-sports-stream.vercel.app",
     },
   ];
 
   return (
-    <section id="work" className="py-section bg-grain">
-      <div className="container mx-auto px-content">
-        <h2 className="font-serif text-heading-2 mb-12 text-primary dark:text-primary-dark">{"// Selected Works"}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
+    <section id="work" className="py-section bg-grain-light dark:bg-grain-dark bg-cover bg-no-repeat relative overflow-hidden">
+      {/* Content Container */}
+      <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        {/* Section Heading */}
+        <h2
+          className="font-serif text-3xl sm:text-4xl md:text-5xl mb-12 text-primary dark:text-primary-dark text-left"
+          data-aos="fade-down"
+          data-aos-delay="200"
+        >
+          {"// Projects"}
+        </h2>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative aspect-square overflow-hidden bg-secondary dark:bg-secondary-dark border border-primary dark:border-primary-dark hover:shadow-xl transition-shadow duration-300"
+              className="group relative aspect-square overflow-hidden bg-secondary/50 dark:bg-secondary-dark/50 border border-primary dark:border-primary-dark hover:shadow-xl transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay={300 + index * 100} // Staggered delay
             >
+              {/* Project Image */}
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-background-dark/80 dark:bg-background-light/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+
+              {/* Project Overlay */}
+              <div className="absolute inset-0 bg-background/90 dark:bg-background-dark/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-center p-6">
-                  <h3 className="font-serif text-heading-2 mb-2 text-accent dark:text-accent-dark">{project.title}</h3>
-                  <p className="font-mono text-body mb-4 text-accent dark:text-accent-dark">{project.category}</p>
+                  {/* Project Title */}
+                  <h3 className="font-serif text-2xl sm:text-3xl mb-2 text-primary dark:text-primary-dark">
+                    {project.title}
+                  </h3>
+
+                  {/* Project Category */}
+                  <p className="font-mono text-base sm:text-lg mb-2 text-foreground-light dark:text-foreground-dark">
+                    {project.category}
+                  </p>
+
+                  {/* Project Description */}
+                  <p className="font-mono text-sm sm:text-base mb-4 text-foreground-light dark:text-foreground-dark">
+                    {project.description}
+                  </p>
+
+                  {/* Project Links */}
                   <div className="flex justify-center gap-4">
                     <a
                       href={project.github}
@@ -59,7 +93,7 @@ const Portfolio = () => {
                       rel="noopener noreferrer"
                       className="p-2 bg-primary/20 dark:bg-primary-dark/20 rounded-full hover:bg-primary/40 dark:hover:bg-primary-dark/40 transition-colors duration-300"
                     >
-                      <Github className="w-6 h-6 text-accent dark:text-accent-dark" />
+                      <Github className="w-6 h-6 text-primary dark:text-primary-dark" />
                     </a>
                     <a
                       href={project.preview}
@@ -67,7 +101,7 @@ const Portfolio = () => {
                       rel="noopener noreferrer"
                       className="p-2 bg-primary/20 dark:bg-primary-dark/20 rounded-full hover:bg-primary/40 dark:hover:bg-primary-dark/40 transition-colors duration-300"
                     >
-                      <ExternalLink className="w-6 h-6 text-accent dark:text-accent-dark" />
+                      <ExternalLink className="w-6 h-6 text-primary dark:text-primary-dark" />
                     </a>
                   </div>
                 </div>

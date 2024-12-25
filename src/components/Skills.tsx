@@ -1,46 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Code2, Palette, Database, Layout } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 
 const Skills = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
   const skills = [
     {
       category: "Frontend Development",
-      icon: <Layout className="w-8 h-8" />,
-      items: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+      icon: <Layout className="w-8 h-8 text-primary dark:text-primary-dark" />,
+      items: ["HTML", "CSS", "React", "Tailwind CSS", "Next.js"],
     },
     {
       category: "Backend Development",
-      icon: <Database className="w-8 h-8" />,
-      items: ["Node.js", "Python", "PostgreSQL", "REST APIs"],
+      icon: <Database className="w-8 h-8 text-primary dark:text-primary-dark" />,
+      items: ["Node.js", "MONGODB", "SUPABASE"],
     },
     {
       category: "Programming Languages",
-      icon: <Code2 className="w-8 h-8" />,
-      items: ["JavaScript", "Python", "TypeScript", "SQL"],
-    },
-    {
-      category: "Design Tools",
-      icon: <Palette className="w-8 h-8" />,
-      items: ["Figma", "Adobe XD", "Photoshop", "Illustrator"],
+      icon: <Code2 className="w-8 h-8 text-primary dark:text-primary-dark" />,
+      items: ["JavaScript", "SQL"],
     },
   ];
 
   return (
-    <section id="skills" className="py-section bg-grain">
-      <div className="container mx-auto px-content">
-        <h2 className="font-serif text-heading-2 mb-12 text-primary dark:text-primary-dark">{"// Technical Skills"}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skill) => (
+    <section id="skills" className="py-section bg-grain-light dark:bg-grain-dark bg-cover bg-no-repeat relative overflow-hidden">
+      {/* Content Container */}
+      <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        {/* Section Heading */}
+        <h2
+          className="font-serif text-3xl sm:text-4xl md:text-5xl mb-12 text-primary dark:text-primary-dark text-left"
+          data-aos="fade-down"
+          data-aos-delay="200"
+        >
+          {"// Technical Skills"}
+        </h2>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, index) => (
             <div
               key={skill.category}
               className="p-6 border border-primary dark:border-primary-dark bg-secondary/50 dark:bg-secondary-dark/50 hover:shadow-xl transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay={300 + index * 100} // Staggered delay
             >
               <div className="flex flex-col items-center text-center">
-                <div className="mb-4 text-primary dark:text-primary-dark">{skill.icon}</div>
-                <h3 className="font-serif text-lg mb-4 text-primary dark:text-primary-dark">{skill.category}</h3>
+                {/* Skill Icon */}
+                <div className="mb-4">{skill.icon}</div>
+
+                {/* Skill Category */}
+                <h3 className="font-serif text-lg mb-4 text-primary dark:text-primary-dark">
+                  {skill.category}
+                </h3>
+
+                {/* Skill Items */}
                 <ul className="space-y-2">
                   {skill.items.map((item) => (
-                    <li key={item} className="font-mono text-sm text-foreground-light dark:text-foreground-dark">
+                    <li
+                      key={item}
+                      className="font-mono text-sm text-foreground-light dark:text-foreground-dark"
+                    >
                       {item}
                     </li>
                   ))}
