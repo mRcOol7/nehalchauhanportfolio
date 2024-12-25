@@ -17,15 +17,18 @@ const About = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Profile Image */}
           <div
-            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-primary dark:border-primary-dark shadow-lg"
+            className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 relative rounded-full overflow-hidden border-4 border-primary dark:border-primary-dark shadow-lg"
             data-aos="zoom-in"
             data-aos-delay="200"
           >
-            <img
-              src="https://i.ibb.co/RjgY0Pn/IMG-7601.jpg" // Replace with your profile image URL
-              alt="Nehal Chauhan"
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full absolute inset-0">
+              <img
+                src="https://i.ibb.co/RjgY0Pn/IMG-7601.jpg"
+                alt="Nehal Chauhan"
+                className="w-full h-full object-cover object-center scale-105"
+                style={{ objectPosition: 'center 20%' }}
+              />
+            </div>
           </div>
 
           {/* Text Content */}

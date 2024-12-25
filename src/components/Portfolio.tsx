@@ -44,7 +44,7 @@ const Portfolio = () => {
       <div className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 relative z-10">
         {/* Section Heading */}
         <h2
-          className="font-serif text-3xl sm:text-4xl md:text-5xl mb-12 text-primary dark:text-primary-dark text-left"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl mb-12 text-primary dark:text-primary-dark font-bold text-left"
           data-aos="fade-down"
           data-aos-delay="200"
         >
@@ -56,9 +56,9 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative aspect-square overflow-hidden bg-secondary/50 dark:bg-secondary-dark/50 border border-primary dark:border-primary-dark hover:shadow-xl transition-shadow duration-300"
+              className="group relative aspect-square overflow-hidden bg-secondary/50 dark:bg-secondary-dark/50 border border-primary/20 dark:border-primary-dark/20 hover:shadow-xl transition-shadow duration-300"
               data-aos="fade-up"
-              data-aos-delay={300 + index * 100} // Staggered delay
+              data-aos-delay={300 + index * 100}
             >
               {/* Project Image */}
               <img
@@ -68,15 +68,15 @@ const Portfolio = () => {
               />
 
               {/* Project Overlay */}
-              <div className="absolute inset-0 bg-background/90 dark:bg-background-dark/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-background-light/95 dark:bg-background-dark/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-center p-6">
                   {/* Project Title */}
-                  <h3 className="font-serif text-2xl sm:text-3xl mb-2 text-primary dark:text-primary-dark">
+                  <h3 className="font-serif text-2xl sm:text-3xl mb-2 text-primary dark:text-primary-dark font-semibold">
                     {project.title}
                   </h3>
 
                   {/* Project Category */}
-                  <p className="font-mono text-base sm:text-lg mb-2 text-foreground-light dark:text-foreground-dark">
+                  <p className="font-mono text-base sm:text-lg mb-2 text-foreground-light dark:text-foreground-dark opacity-90">
                     {project.category}
                   </p>
 
@@ -91,7 +91,7 @@ const Portfolio = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-primary/20 dark:bg-primary-dark/20 rounded-full hover:bg-primary/40 dark:hover:bg-primary-dark/40 transition-colors duration-300"
+                      className="p-2 bg-primary/10 dark:bg-primary-dark/10 rounded-full hover:bg-primary/20 dark:hover:bg-primary-dark/20 transition-colors duration-300"
                     >
                       <Github className="w-6 h-6 text-primary dark:text-primary-dark" />
                     </a>
@@ -99,7 +99,7 @@ const Portfolio = () => {
                       href={project.preview}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-primary/20 dark:bg-primary-dark/20 rounded-full hover:bg-primary/40 dark:hover:bg-primary-dark/40 transition-colors duration-300"
+                      className="p-2 bg-primary/10 dark:bg-primary-dark/10 rounded-full hover:bg-primary/20 dark:hover:bg-primary-dark/20 transition-colors duration-300"
                     >
                       <ExternalLink className="w-6 h-6 text-primary dark:text-primary-dark" />
                     </a>
