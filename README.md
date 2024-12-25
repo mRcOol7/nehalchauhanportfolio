@@ -1,4 +1,4 @@
-# Nehal Cauhan Portfolio
+# Nehal Chauhan Portfolio
 
 <div align="center">
 
@@ -6,7 +6,9 @@
 
 A modern, minimalist portfolio website built with React, TypeScript, and ShadcnUI components.
 
-[Live Demo](https://your-portfolio-url.com) | [Report Bug](https://github.com/mRcOol7/nehalchauhanportfolio/issues) | [Request Feature](https://github.com/mRcOol7/nehalchauhanportfolio/issues)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Portfolio-brightgreen)](https://your-portfolio-url.com)
+[![Report Bug](https://img.shields.io/badge/Report%20Bug-Issues-red)](https://github.com/mRcOol7/nehalchauhanportfolio/issues)
+[![Request Feature](https://img.shields.io/badge/Request%20Feature-Issues-blue)](https://github.com/mRcOol7/nehalchauhanportfolio/issues)
 
 </div>
 
