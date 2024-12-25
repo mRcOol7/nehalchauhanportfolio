@@ -59,6 +59,7 @@ export default {
       animation: {
         "fade-in": "fadeIn 0.3s ease-out forwards",
         "theme-toggle": "themeToggle 0.3s ease-in-out",
+        "float": "float 3s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -69,9 +70,13 @@ export default {
           "0%": { transform: "scale(0.95)" },
           "100%": { transform: "scale(1)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
       },
       backgroundImage: {
-        'grain': "url('data:image/png;base64,data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEX///8zMzMzMzMzMzMzMzMzMzMzMzMzMzM2QjeuAAAACHRSTlMABgkNERQXGx8w6xQAAABgSURBVDjLY2BABYxFDAwMLAwMjFIMDGwODAyMBQwM7AYMDEy5QAEBBgbWDgYGZl8GBpZwBgZWBwYGFgMGBmYHqDgvA4PCBQYGNgcGBsYCBgZ2AwYGpgKgTkRYMmBBcx8AJt8H1RpZdnwAAAAASUVORK5CYII=')",
+        'grain': "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzM2QjeuAAAACHRSTlMABgkNERQXGx8w6xQAAABgSURBVDjLY2BABYxFDAwMLAwMjCUMDGwODAyMBQwM7AYMDEy5QAEBBgbWDgYGZl8GBpZwBgZWBwYGFgMGBmYHqDgvA4PCBQYGNgcGBsYCBgZ2AwYGpgKgTkRYMmBBcx8AJt8H1RpZdnwAAAAASUVORK5CYII=')",
       },
     },
   },
