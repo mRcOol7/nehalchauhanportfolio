@@ -1,69 +1,160 @@
-# Welcome to your Lovable project
+# Nehal CHauhan Portfolio
 
-## Project info
+<div align="center">
 
-**URL**: https://lovable.dev/projects/5fb5a948-35e1-4d43-87a5-50a309f8952e
+[![Twitter Follow](https://img.shields.io/twitter/follow/nehal_chauhan19?style=social)](https://twitter.com/nehal_chauhan19)
 
-## How can I edit this code?
+A modern, minimalist portfolio website built with React, TypeScript, and ShadcnUI components.
 
-There are several ways of editing your application.
+[Live Demo](https://your-portfolio-url.com) | [Report Bug](https://github.com/mRcOol7/nehalchauhanportfolio/issues) | [Request Feature](https://github.com/mRcOol7/nehalchauhanportfolio/issues)
 
-**Use Lovable**
+</div>
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5fb5a948-35e1-4d43-87a5-50a309f8952e) and start prompting.
+## ✨ Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 🎨 **Modern Design**: Clean, minimalist interface with attention to typography and spacing
+- 🌓 **Dark Mode**: Seamless dark/light theme switching
+- 📱 **Responsive**: Optimized for all device sizes
+- ⚡ **Performance**: Built with Vite for lightning-fast development and builds
+- 🔒 **Type-Safe**: Full TypeScript support for robust development
+- 🎭 **Animations**: Smooth transitions and effect using AOS
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Core
+- [React 18](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### UI & Styling
+- [TailwindCSS](https://tailwindcss.com/)
+- [ShadcnUI](https://ui.shadcn.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [GSAP](https://greensock.com/gsap/)
 
-Follow these steps:
+### State Management & Routing
+- [TanStack Query](https://tanstack.com/query)
+- [React Router DOM](https://reactrouter.com/)
+## 🚀 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js (v16 or higher)
+- npm/yarn/pnpm
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mRcOol7/nehalchauhanportfolio
+   ```
+2. Navigate to project directory:
+   ```bash
+   cd nehalchauhanportfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+5. Open http://localhost:5173 in your browser.
+
+📝 **Available Scripts**
+```bash
+# Development server
 npm run dev
+
+# Production build
+npm run build
+
+# Development build
+npm run build:dev
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```plaintext
+minimalist-portfolio-vista-21/
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── pages/          # Page components
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── styles/         # Global styles
+│   └── types/          # TypeScript type definitions
+├── public/             # Static assets
+├── dist/              # Production build
+└── ...config files
+```
 
-**Use GitHub Codespaces**
+## ⚙️ Configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Styling
+Customize TailwindCSS in `tailwind.config.ts`:
+```javascript
+module.exports = {
+  // Your custom configuration
+  theme: {
+    extend: {
+      // Custom extensions
+    }
+  }
+}
+```
 
-## What technologies are used for this project?
+### Components
+Modify ShadcnUI components in `components.json`:
+```json
+{
+  "style": "default",
+  "rsc": false,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/styles/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  }
+}
+```
 
-This project is built with .
+## 🤝 Contributing
 
+Contributions are welcome! Please follow these steps:
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 👥 Contact
+
+Your Name - @mRcOol7
+
+Project Link: [GitHub Repository](https://github.com/mRcOol7/nehalchauhanportfolio)
+
+## 🙏 Acknowledgments
+
+- ShadcnUI
+- Radix UI
+- TailwindCSS
 - Vite
-- TypeScript
 - React
-- shadcn-ui
-- Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/5fb5a948-35e1-4d43-87a5-50a309f8952e) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+⭐️ Star this project if you find it useful!
