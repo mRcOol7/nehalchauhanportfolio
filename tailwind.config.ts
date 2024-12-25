@@ -22,24 +22,30 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#FFFFFF",
-        foreground: "#000000",
+        background: {
+          light: "#F5F2EA",
+          dark: "#1A1A1A",
+        },
+        foreground: {
+          light: "#8B7355",
+          dark: "#F2E8D9",
+        },
         primary: {
-          DEFAULT: "#000000",
-          foreground: "#FFFFFF",
+          DEFAULT: "#8B7355",
+          dark: "#C0A062",
         },
         secondary: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#000000",
+          DEFAULT: "#F5F2EA",
+          dark: "#1A1A1A",
         },
         accent: {
-          DEFAULT: "#F5F5F5",
-          foreground: "#000000",
+          DEFAULT: "#FFFFF0",
+          dark: "#C0A062",
         },
       },
       fontFamily: {
-        sans: ["Romanine", "monospace"],
-        mono: ["Courier New", "monospace"],
+        serif: ["Playfair Display", "serif"],
+        mono: ["Courier Prime", "monospace"],
       },
       fontSize: {
         "heading-1": ["48px", { lineHeight: "1.2", letterSpacing: "0.5px" }],
@@ -52,15 +58,20 @@ export default {
       },
       animation: {
         "fade-in": "fadeIn 0.3s ease-out forwards",
+        "theme-toggle": "themeToggle 0.3s ease-in-out",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        themeToggle: {
+          "0%": { transform: "scale(0.95)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
-      gridTemplateColumns: {
-        portfolio: "repeat(auto-fit, minmax(300px, 1fr))",
+      backgroundImage: {
+        'grain': "url('data:image/png;base64,data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEX///8zMzMzMzMzMzMzMzMzMzMzMzMzMzM2QjeuAAAACHRSTlMABgkNERQXGx8w6xQAAABgSURBVDjLY2BABYxFDAwMLAwMjFIMDGwODAyMBQwM7AYMDEy5QAEBBgbWDgYGZl8GBpZwBgZWBwYGFgMGBmYHqDgvA4PCBQYGNgcGBsYCBgZ2AwYGpgKgTkRYMmBBcx8AJt8H1RpZdnwAAAAASUVORK5CYII=')",
       },
     },
   },
