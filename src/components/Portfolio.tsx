@@ -25,24 +25,24 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="work" className="py-section bg-accent">
+    <section id="work" className="py-section">
       <div className="container mx-auto px-content">
-        <h2 className="text-heading-2 mb-12">Selected Work</h2>
+        <h2 className="font-mono text-heading-2 mb-12">{"// Selected Work"}</h2>
         <div className="grid grid-cols-portfolio gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group relative aspect-square overflow-hidden bg-white"
+              className="group relative aspect-square overflow-hidden bg-white border border-black"
             >
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover grayscale transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="text-center text-white">
-                  <h3 className="text-heading-2 mb-2">{project.title}</h3>
-                  <p className="text-body">{project.category}</p>
+                  <h3 className="font-mono text-heading-2 mb-2">{project.title}</h3>
+                  <p className="font-mono text-body">{project.category}</p>
                 </div>
               </div>
             </div>

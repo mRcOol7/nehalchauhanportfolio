@@ -38,7 +38,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Romanine", "sans-serif"],
+        sans: ["Romanine", "monospace"],
+        mono: ["Courier New", "monospace"],
       },
       fontSize: {
         "heading-1": ["48px", { lineHeight: "1.2", letterSpacing: "0.5px" }],
